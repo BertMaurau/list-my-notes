@@ -15,11 +15,11 @@
                 <ng-md-icon icon="add"></ng-md-icon>
             </md-button>
         </div>
-        <md-tabs md-stretch-tabs class="md-primary" md-selected="data.selectedIndex">
-            <md-tab id="tab1" aria-controls="tab1-content">
+        <md-tabs md-stretch-tabs="always" class="md-primary" md-selected="data.selectedIndex">
+            <md-tab id="tab1" aria-controls="tab1-content" ng-click="vm.showFavourites = false">
                 All
             </md-tab>
-            <md-tab id="tab2" aria-controls="tab2-content">
+            <md-tab id="tab2" aria-controls="tab2-content" ng-click="vm.showFavourites = true">
                 Favorites
             </md-tab>
         </md-tabs>
@@ -43,7 +43,7 @@
         <md-list ng-repeat="group in vm.notes">
             <md-subheader>{{ group.name }} ({{ group.notes.length }})</md-subheader>
 
-            <md-list-item ng-repeat="note in group.notes  | orderBy:'closed'" class="md-2-line" ng-class="{'note-closed':note.closed}" ng-click="vm.note = note">
+            <md-list-item ng-repeat="note in group.notes  | filter: (vm.showFavourites || '') && { favourite: 1 } | orderBy:'closed'" class="md-2-line" ng-class="{'note-closed':note.closed}" ng-click="vm.note = note">
                 <img ng-if="vm.settings.show_images" ng-src="{{ note.image || 'assets/images/note.png' }}" class="md-avatar" />
                 <div class="md-list-item-text" layout="column">
                     <h3 md-truncate>{{ note.title }}</h3>
