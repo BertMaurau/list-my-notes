@@ -6,7 +6,6 @@ angular.module('notes.header', [])
     var vm = this;
 
     vm.toggleSidenav = function(menuId) {
-
         $mdSidenav(menuId).toggle();
     };
 
