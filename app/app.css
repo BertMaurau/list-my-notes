@@ -9,6 +9,10 @@ md-sidenav {
     opacity: 0.5;
 }
 
+.note-selected {
+    background: lightgrey;
+}
+
 ng-md-icon {
     line-height: 1;
 }

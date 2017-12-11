@@ -7,6 +7,7 @@ angular.module('notes.notesService', [])
     var notes = this;
 
     notes.$storage = $localStorage;
+    notes.lastId = 0;
 
     notes.init = function() {
 
@@ -50,26 +51,55 @@ angular.module('notes.notesService', [])
                 title: "Hello World!",
                 subtitle: "This is my first note!",
                 body: "I can write whatever I want here! :)",
-                due_date: "",
+                due_date: new Date(),
                 closed: 0,
                 group: 0,
                 favorite: 1,
                 date_created: new Date(),
-                date_updated: new Date()
+                date_updated: new Date(),
+                date_deleted: false
             }, {
-                id: 1,
+                id: 2,
                 title: "Hello Work!",
                 subtitle: "Something more professionaly",
                 body: "Work needs to be done as well. This can be stored under its own category!",
-                due_date: "",
+                due_date: new Date(),
                 closed: 0,
                 group: 3,
                 favorite: 0,
                 date_created: new Date(),
-                date_updated: new Date()
+                date_updated: new Date(),
+                date_deleted: false
             }]
 
             notes.storeNotes();
+        }
+
+        notes.lastId = notes.notes[notes.notes.length - 1].id;
+
+        console.log('Application loaded..');
+        console.log(' - Config: ' + notes.config.length);
+        console.log(' - Groups: ' + notes.groups.length);
+        console.log(' - Notes: ' + notes.notes.length);
+        console.log(' - Last note: ' + notes.lastId);
+    }
+
+    notes.newNote = function() {
+        notes.lastId += 1;
+
+        return {
+            id: notes.lastId,
+            title: "",
+            subtitle: "",
+            body: "",
+            due_date: "",
+            closed: 0,
+            group: 0,
+            favorite: 0,
+
+            date_created: new Date(),
+            date_updated: new Date(),
+            date_deleted: false
         }
     }
 

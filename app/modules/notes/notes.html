@@ -40,7 +40,8 @@
         <md-list ng-repeat="group in vm.groups | orderBy:'order'">
             <md-subheader>{{ group.name }} ({{ (vm.notes | filter: {group: group.id}).length }})</md-subheader>
 
-            <md-list-item ng-repeat="note in vm.notes  | filter: {group: group.id} | filter: (vm.showFavourites || '') && { favorite: 1, group: group.id } | orderBy:'closed'" class="md-2-line" ng-class="{'note-closed':note.closed}" ng-click="vm.note = note">
+            <md-list-item ng-repeat="note in vm.notes  | filter: {group: group.id} | filter: {date_deleted: false} | filter: (vm.showFavourites || '') && { favorite: 1 } | orderBy:['closed', '-id']" class="md-2-line" ng-class="{'note-closed':note.closed, 'note-selected': note.id==vm.note.id}"
+                ng-click="vm.note = note">
                 <img ng-if="vm.settings.show_images" ng-src="{{ note.image || 'assets/images/note.png' }}" class="md-avatar" />
                 <div class="md-list-item-text" layout="column">
                     <h3 md-truncate>{{ note.title }}</h3>
@@ -94,15 +95,14 @@
 
                 <md-input-container>
                     <label>Due Date</label>
-                    <md-datepicker ng-model="note.due_date"></md-datepicker>
+                    <md-datepicker ng-model="vm.note.due_date"></md-datepicker>
                 </md-input-container>
             </div>
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
 
-            <md-button>{{ vm.note.closed ? 'Open' : 'Close' }}</md-button>
-            <md-button>Delete</md-button>
-            <md-button>Save</md-button>
+            <md-button ng-click="vm.toggleNote()">{{ vm.note.closed ? 'Open' : 'Close' }}</md-button>
+            <md-button ng-click="vm.deleteNote()">Delete</md-button>
         </md-card-actions>
     </md-card>
 </md-content>
