@@ -43,7 +43,7 @@ angular.module('notes.notes', ['ngRoute'])
                 due_date: "",
                 closed: 1,
                 group: 0,
-                favourite: 0,
+                favorite: 1,
                 date_created: "",
                 date_updated: ""
             }, {
@@ -54,7 +54,7 @@ angular.module('notes.notes', ['ngRoute'])
                 due_date: "",
                 closed: 0,
                 group: 0,
-                favourite: 0,
+                favorite: 0,
                 date_created: "",
                 date_updated: ""
             }, {
@@ -65,7 +65,7 @@ angular.module('notes.notes', ['ngRoute'])
                 due_date: "",
                 closed: 0,
                 group: 0,
-                favourite: 1,
+                favorite: 1,
                 date_created: "",
                 date_updated: ""
             }]
