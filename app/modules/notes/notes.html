@@ -101,7 +101,8 @@
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
 
-            <md-button ng-click="vm.toggleNote()">{{ vm.note.closed ? 'Open' : 'Close' }}</md-button>
+            <md-button ng-click="vm.toggleNoteFavorite()">{{ vm.note.favorite ? 'Un-favorite' : 'Favorite' }}</md-button>
+            <md-button ng-click="vm.toggleNoteStatus()">{{ vm.note.closed ? 'Open' : 'Close' }}</md-button>
             <md-button ng-click="vm.deleteNote()">Delete</md-button>
         </md-card-actions>
     </md-card>

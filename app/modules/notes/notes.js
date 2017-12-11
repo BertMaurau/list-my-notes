@@ -34,8 +34,11 @@ angular.module('notes.notes', ['ngRoute'])
     vm.deleteNote = function() {
         vm.note.date_deleted = new Date();
     }
-    vm.toggleNote = function() {
+    vm.toggleNoteStatus = function() {
         vm.note.closed = (vm.note.closed) ? 0 : 1;
+    }
+    vm.toggleNoteFavorite = function() {
+        vm.note.favorite = (vm.note.favorite) ? 0 : 1;
     }
     return vm;
 }]);
