@@ -85,7 +85,7 @@
             <div layout="row">
                 <md-input-container class="md-block" flex-gt-sm flex>
                     <label>Add to Group</label>
-                    <md-select ng-model="note.group">
+                    <md-select ng-model="vm.note.group">
                         <md-option ng-repeat="group in vm.notes" value="{{group.id}}">
                             {{group.name}}
                         </md-option>
