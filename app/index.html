@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="notes" class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>List My Notes</title>
+    <meta name="description" content="A simple Notes system">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body layout="column" layout-fill>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+    <md-toolbar ng-controller="HeaderCtrl as vm">
+        <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" aria-label="Menu" ng-click="vm.toggleSidenav('left')" hide-gt-sm>
+                <ng-md-icon icon="menu"></ng-md-icon>
+            </md-button>
+
+            <img src="assets/images/logo.png" class="md-avatar" alt="List my Notes" height="40" width="40" />
+            <h2 flex md-truncate>List My Notes</h2>
+
+            <md-menu md-position-mode="target-right target">
+                <md-button class="md-icon-button" aria-label="Open menu" ng-click="$mdMenu.open($event)">
+                    <ng-md-icon icon="more_vert"></ng-md-icon>
+                </md-button>
+                <md-menu-content width="4">
+                    <md-menu-item>
+                        <md-button ng-click="">
+                            <md-tooltip md-direction="bottom">Settings</md-tooltip>
+                            <ng-md-icon md-menu-align-target icon="settings"></ng-md-icon> Settings
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-click="">
+                            <md-tooltip md-direction="bottom">About</md-tooltip>
+                            <ng-md-icon md-menu-align-target icon="help"></ng-md-icon> About
+                        </md-button>
+                    </md-menu-item>
+
+                </md-menu-content>
+            </md-menu>
+
+        </div>
+    </md-toolbar>
+
+    <md-content layout-fill layout="row" flex>
+        <div ng-view layout="row" flex></div>
+    </md-content>
+
+
+    <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="bower_components/angular-loader/angular-loader.min.js"></script>
+    <script src="bower_components/angular-material/angular-material.min.js"></script>
+    <script src="bower_components/angular-material-icons/angular-material-icons.min.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+
+    <script src="app.js"></script>
+    <script src="modules/shared/header/header.js"></script>
+
+    <script src="modules/notes/notes.js"></script>
+</body>
+
+</html>

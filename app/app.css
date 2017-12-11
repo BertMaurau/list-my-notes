@@ -1,0 +1,14 @@
+/* app css stylesheet */
+
+md-backdrop,
+md-sidenav {
+    position: fixed;
+}
+
+.note-closed {
+    opacity: 0.5;
+}
+
+ng-md-icon {
+    line-height: 1;
+}
