@@ -59,35 +59,33 @@
 </md-sidenav>
 
 <!-- Note detail -->
-<md-content layout="row" flex="100">
+<md-content flex>
     <!-- Current open Note -->
-    <md-card fill-parent flex="100">
-        <md-card-title flex>
+    <md-card>
+        <md-card-title>
             <md-card-title-text>
-                <span class="md-headline">
-                     <md-input-container class="md-block">
-                           <label>Title</label>
-                           <input ng-model="vm.note.title">
-                         </md-input-container></span>
-                <span class="md-subhead">
-                     <md-input-container class="md-block">
-                           <label>Subtitle</label>
-                           <input ng-model="vm.note.subtitle">
-                         </md-input-container></span>
+                <md-input-container class="no-margin-bottom">
+                    <label>Title</label>
+                    <input ng-model="vm.note.title">
+                </md-input-container>
+                <md-input-container class="no-margin-bottom no-margin-top">
+                    <label>Subtitle</label>
+                    <input ng-model="vm.note.subtitle">
+                </md-input-container>
             </md-card-title-text>
             <md-card-avatar>
                 <img ng-src="{{ note.image || 'assets/images/note.png' }}" width="64" height="64">
             </md-card-avatar>
         </md-card-title>
 
-        <md-card-content layout="column" flex>
-            <md-input-container class="md-block" flex>
+        <md-card-content layout="column">
+            <md-input-container flex>
                 <label>Content</label>
-                <textarea ng-model="vm.note.body" rows="5" md-select-on-focus></textarea>
+                <textarea ng-model="vm.note.body" rows="5" class="md-block"></textarea>
             </md-input-container>
 
-            <div layout-gt-sm="row">
-                <md-input-container class="md-block" flex-gt-sm>
+            <div layout="row">
+                <md-input-container class="md-block" flex-gt-sm flex>
                     <label>Add to Group</label>
                     <md-select ng-model="note.group">
                         <md-option ng-repeat="group in vm.notes" value="{{group.id}}">

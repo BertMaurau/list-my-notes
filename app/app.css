@@ -12,3 +12,11 @@ md-sidenav {
 ng-md-icon {
     line-height: 1;
 }
+
+.no-margin-bottom {
+    margin-bottom: 0px;
+}
+
+.no-margin-top {
+    margin-top: 0px;
+}
