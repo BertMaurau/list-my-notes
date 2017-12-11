@@ -37,10 +37,10 @@
         </md-tabs>
     </md-toolbar>
     <md-content>
-        <md-list ng-repeat="group in vm.notes">
-            <md-subheader>{{ group.name }} ({{ group.notes.length }})</md-subheader>
+        <md-list ng-repeat="group in vm.groups | orderBy:'order'">
+            <md-subheader>{{ group.name }} ({{ (vm.notes | filter: {group: group.id}).length }})</md-subheader>
 
-            <md-list-item ng-repeat="note in group.notes  | filter: (vm.showFavourites || '') && { favorite: 1 } | orderBy:'closed'" class="md-2-line" ng-class="{'note-closed':note.closed}" ng-click="vm.note = note">
+            <md-list-item ng-repeat="note in vm.notes  | filter: {group: group.id} | filter: (vm.showFavourites || '') && { favorite: 1, group: group.id } | orderBy:'closed'" class="md-2-line" ng-class="{'note-closed':note.closed}" ng-click="vm.note = note">
                 <img ng-if="vm.settings.show_images" ng-src="{{ note.image || 'assets/images/note.png' }}" class="md-avatar" />
                 <div class="md-list-item-text" layout="column">
                     <h3 md-truncate>{{ note.title }}</h3>
@@ -86,7 +86,7 @@
                 <md-input-container class="md-block" flex-gt-sm flex>
                     <label>Add to Group</label>
                     <md-select ng-model="vm.note.group">
-                        <md-option ng-repeat="group in vm.notes" value="{{group.id}}">
+                        <md-option ng-repeat="group in vm.groups" value="{{group.id}}">
                             {{group.name}}
                         </md-option>
                     </md-select>

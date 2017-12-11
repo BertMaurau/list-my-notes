@@ -27,8 +27,8 @@ angular.module('notes.notes', ['ngRoute'])
     }
 
     vm.settings = notesService.config;
+    vm.groups = notesService.groups;
     vm.notes = notesService.notes;
-
 
     vm.addNote = function($event) {
         console.log('Add pls');
